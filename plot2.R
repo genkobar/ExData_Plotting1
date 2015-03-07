@@ -23,10 +23,10 @@ datetime <- paste(elecsub$Date, elecsub$Time, sep=" ")
 datetimeobj <- strptime(datetime, "%d/%m/%Y %H:%M:%S")
 
 ## Bind new time object column to the front of the elecsub data.frame
-elecsubt <-cbind(datetimeobj, elecsub)
+elecsub <-cbind(datetimeobj, elecsub)
 
-## Plot histogram and output to png file 
+## Plot graph and output to png file
 png(filename="plot2.png", width=480, height=480)
 par(bg="NA")
-with(elecsubt, plot(datetimeobj, Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)"))
+with(elecsub, plot(datetimeobj, Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)"))
 dev.off()

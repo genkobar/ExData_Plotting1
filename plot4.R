@@ -23,15 +23,16 @@ datetime <- paste(elecsub$Date, elecsub$Time, sep=" ")
 datetimeobj <- strptime(datetime, "%d/%m/%Y %H:%M:%S")
 
 ## Bind new time object column to the front of the elecsub data.frame
-elecsubt <-cbind(datetimeobj, elecsub)
+elecsub <-cbind(datetimeobj, elecsub)
 
+## Plot graphs and output to png file
 png(filename="plot4.png", width=480, height=480)
 par(mfcol=c(2,2), bg="NA")
-with(elecsubt, {
+with(elecsub, {
   plot(datetimeobj, Global_active_power, ylab="Global Active Power", xlab="", type="l")
-  with(elecsubt, plot(datetimeobj, Sub_metering_1, type="l", col="black", ylab="Energy sub metering", xlab=""))
-  with(elecsubt, points(datetimeobj, Sub_metering_2, type="l", col="red"))
-  with(elecsubt, points(datetimeobj, Sub_metering_3, type="l", col="blue"))
+  with(elecsub, plot(datetimeobj, Sub_metering_1, type="l", col="black", ylab="Energy sub metering", xlab=""))
+  with(elecsub, points(datetimeobj, Sub_metering_2, type="l", col="red"))
+  with(elecsub, points(datetimeobj, Sub_metering_3, type="l", col="blue"))
   legend("topright", lty=c(1,1), col = c("black", "red", "blue"), box.col="white", inset=0.01, legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
   plot(datetimeobj, Voltage, ylab="Voltage", xlab="datetime", type="l")
   plot(datetimeobj, Global_reactive_power, xlab="datetime", type="l")

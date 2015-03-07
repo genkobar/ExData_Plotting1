@@ -23,12 +23,13 @@ datetime <- paste(elecsub$Date, elecsub$Time, sep=" ")
 datetimeobj <- strptime(datetime, "%d/%m/%Y %H:%M:%S")
 
 ## Bind new time object column to the front of the elecsub data.frame
-elecsubt <-cbind(datetimeobj, elecsub)
+elecsub <-cbind(datetimeobj, elecsub)
 
+## Plot graph and output to png file
 png(filename="plot3.png", width=480, height=480)
 par(bg="NA")
-with(elecsubt, plot(datetimeobj, Sub_metering_1, type="l", col="black", ylab="Energy sub metering", xlab=""))
-with(elecsubt, points(datetimeobj, Sub_metering_2, type="l", col="red"))
-with(elecsubt, points(datetimeobj, Sub_metering_3, type="l", col="blue"))
+with(elecsub, plot(datetimeobj, Sub_metering_1, type="l", col="black", ylab="Energy sub metering", xlab=""))
+with(elecsub, points(datetimeobj, Sub_metering_2, type="l", col="red"))
+with(elecsub, points(datetimeobj, Sub_metering_3, type="l", col="blue"))
 legend("topright", lty=c(1,1), col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 dev.off()
