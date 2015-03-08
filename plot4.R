@@ -33,7 +33,7 @@ with(elecsub, {
   with(elecsub, plot(datetimeobj, Sub_metering_1, type="l", col="black", ylab="Energy sub metering", xlab=""))
   with(elecsub, points(datetimeobj, Sub_metering_2, type="l", col="red"))
   with(elecsub, points(datetimeobj, Sub_metering_3, type="l", col="blue"))
-  legend("topright", lty=c(1,1), col = c("black", "red", "blue"), box.col="white", inset=0.01, legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+  legend("topright", lty=c(1,1), col = c("black", "red", "blue"), box.col="transparent", inset=0.01, legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
   plot(datetimeobj, Voltage, ylab="Voltage", xlab="datetime", type="l")
   plot(datetimeobj, Global_reactive_power, xlab="datetime", type="l")
 })
